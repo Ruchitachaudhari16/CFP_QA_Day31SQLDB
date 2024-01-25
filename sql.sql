@@ -44,3 +44,16 @@ SELECT BasicPay FROM employee_Payroll WHERE EmployeeName = 'Nikita Sharma';
 -- Select all columns for employees who joined between '2018-01-01' and the current date
 SELECT * FROM employee_Payroll WHERE StartDate BETWEEN CAST('2018-01-01' AS DATE) AND CURDATE();
 
+DESC employee_Payroll;
+-- set gender for employee Ruchita Chaudhari.
+UPDATE employee_Payroll
+SET Gender = 'F'
+WHERE EmployeeName = 'Ruchita Chaudhari' AND EmployeeID = 123; -- Replace 123 with the actual EmployeeID
+
+SELECT SUM(BasicPay) from employee_Payroll WHERE Gender='M' GROUP BY Gender='F';
+SELECT MIN(NetPay) from employee_Payroll WHERE Gender='M';
+SELECT MAX(Tax) from employee_Payroll WHERE Gender='M';
+SELECT AVG(Deductions) from employee_Payroll WHERE Gender='M';
+SELECT COUNT(Tax) from employee_Payroll WHERE Gender='M';
+
+
