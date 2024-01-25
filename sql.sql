@@ -36,3 +36,4 @@ VALUES
 (
     'Nikita Sharma','123-456-7890','123 Main St','HR','M',50000.00,5000.00,45000.00,5000.00,40000.00,'2024-01-25','New York','USA'
 );
+select * from employee_Payroll;
