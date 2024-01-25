@@ -37,3 +37,10 @@ VALUES
     'Nikita Sharma','123-456-7890','123 Main St','HR','M',50000.00,5000.00,45000.00,5000.00,40000.00,'2024-01-25','New York','USA'
 );
 select * from employee_Payroll;
+
+-- Select BasicPay for the employee named 'Nikita Sharma'
+SELECT BasicPay FROM employee_Payroll WHERE EmployeeName = 'Nikita Sharma';
+
+-- Select all columns for employees who joined between '2018-01-01' and the current date
+SELECT * FROM employee_Payroll WHERE StartDate BETWEEN CAST('2018-01-01' AS DATE) AND CURDATE();
+
