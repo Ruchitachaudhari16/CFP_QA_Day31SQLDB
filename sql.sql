@@ -56,4 +56,40 @@ SELECT MAX(Tax) from employee_Payroll WHERE Gender='M';
 SELECT AVG(Deductions) from employee_Payroll WHERE Gender='M';
 SELECT COUNT(Tax) from employee_Payroll WHERE Gender='M';
 
+-- UC 11
+CREATE TABLE Employee (
+    EmployeeID INT AUTO_INCREMENT PRIMARY KEY,
+    EmployeeName VARCHAR(255),
+    PhoneNumber VARCHAR(255) NOT NULL,
+    Address VARCHAR(255) DEFAULT 'Not provided',
+    Gender CHAR(1),
+    BasicPay FLOAT,
+    Deductions FLOAT,
+    TaxablePay FLOAT,
+    Tax FLOAT,
+    NetPay FLOAT,
+    StartDate DATE,
+    City VARCHAR(255),
+    Country VARCHAR(255)
+);
+
+CREATE TABLE Department (
+    DepartmentID INT AUTO_INCREMENT PRIMARY KEY,
+    DepartmentName VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE EmployeeDepartment (
+    EmployeeID INT,
+    DepartmentID INT,
+    PRIMARY KEY (EmployeeID, DepartmentID),
+    FOREIGN KEY (EmployeeID) REFERENCES Employee(EmployeeID),
+    FOREIGN KEY (DepartmentID) REFERENCES Department(DepartmentID)
+);
+
+INSERT INTO EmployeeDepartment (EmployeeID, DepartmentID)
+VALUES
+(
+    (SELECT EmployeeID FROM Employee WHERE EmployeeName = 'Terissa'),
+    (SELECT DepartmentID FROM Department WHERE DepartmentName = 'Sales and Marketing')
+);
 
