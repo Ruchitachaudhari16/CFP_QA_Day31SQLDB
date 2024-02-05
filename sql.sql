@@ -52,6 +52,68 @@ WHERE EmployeeName = 'Ruchita Chaudhari' AND EmployeeID = 123; -- Replace 123 wi
 
 SELECT SUM(BasicPay) from employee_Payroll WHERE Gender='M' GROUP BY Gender='F';
 SELECT MIN(NetPay) from employee_Payroll WHERE Gender='M';
+
+
+CREATE TABLE employee_Payroll
+(
+    EmployeeID int AUTO_INCREMENT primary key,
+    EmployeeName varchar(255),
+    PhoneNumber varchar(255) NOT NULL,
+    Address varchar(255) DEFAULT 'Not provided',
+    Department varchar(255) NOT NULL,
+    Gender char(1),
+    BasicPay float,
+    Deductions float,
+    TaxablePay float,
+    Tax float,
+    NetPay float,
+    StartDate Date,
+    City varchar(255),
+    Country varchar(255)
+);
+
+INSERT INTO employee_Payroll
+(
+    EmployeeName, PhoneNumber, Address, Department, Gender, BasicPay, Deductions, TaxablePay, Tax, NetPay, StartDate, City, Country
+)
+VALUES
+(
+    'Ruchita Chaudhari', '123-456-7890', '123 Main St', 'HR', 'M', 50000.00, 5000.00, 45000.00, 5000.00, 40000.00, '2024-01-25', 'New York', 'USA'
+);
+
+INSERT INTO employee_Payroll
+(
+    EmployeeName, PhoneNumber, Address, Department, Gender, BasicPay, Deductions, TaxablePay, Tax, NetPay, StartDate, City, Country
+)
+VALUES
+(
+    'Nikita Sharma', '123-456-7890', '123 Main St', 'HR', 'M', 50000.00, 5000.00, 45000.00, 5000.00, 40000.00, '2024-01-25', 'New York', 'USA'
+);
+
+-- UC 9:- Already columns added.
+ALTER TABLE employee_Payroll
+ADD COLUMN BasicPay float,
+ADD COLUMN Deductions float,
+ADD COLUMN TaxablePay float,
+ADD COLUMN IncomeTax float,
+ADD COLUMN NetPay float;
+
+select * from employee_Payroll;
+-- UC 10
+UPDATE employee_Payroll
+SET Department = 'HR'
+WHERE EmployeeName = 'Terissa';
+select * from employee_Payroll;
+
+INSERT INTO employee_Payroll
+(
+    EmployeeName, PhoneNumber, Address, Department, Gender, BasicPay, Deductions, TaxablePay, Tax, NetPay, StartDate, City, Country
+)
+VALUES
+(
+    'Terissa', '123-456-7890', '123 Main St', 'Sales and Marketing', 'M', 50000.00, 5000.00, 45000.00, 5000.00, 40000.00, '2024-01-25', 'New York', 'USA'
+);
+
 SELECT MAX(Tax) from employee_Payroll WHERE Gender='M';
 SELECT AVG(Deductions) from employee_Payroll WHERE Gender='M';
 SELECT COUNT(Tax) from employee_Payroll WHERE Gender='M';
